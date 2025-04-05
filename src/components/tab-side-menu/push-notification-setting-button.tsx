@@ -19,26 +19,28 @@ export default function PushNotificationSettingButton() {
   const { mutate } = useUpdatePushNotificationSetting();
 
   const handleSettingCheckBox = async (isActive: boolean) => {
-    if (isActive) {
-      const permission = await Notification.requestPermission();
-
-      if (permission === "denied") {
-        errorToast(
-          "request-permission",
-          "브라우저 설정에서 알림을 허용해주세요.",
-        );
-      } else {
-        if (data.webPushToken !== fcmToken) {
-          // 서버에 저장된 FCM 토큰과 현재 가지고 있는 토큰이 다를 경우 서버에 현재 토큰 값 저장
-          const token = await getFcmToken();
-          await registerFcmToken(token, userInformation?.id || 0);
-        }
-
-        mutate(isActive);
-      }
-    } else {
+    if (!isActive) {
       mutate(isActive);
+      return;
     }
+
+    const permission = await Notification.requestPermission();
+
+    if (permission === "denied") {
+      errorToast(
+        "request-permission",
+        "브라우저 설정에서 알림을 허용해주세요.",
+      );
+      return;
+    }
+
+    if (data.webPushToken !== fcmToken) {
+      // 서버에 저장된 FCM 토큰과 현재 가지고 있는 토큰이 다를 경우 서버에 현재 토큰 값 저장
+      const token = await getFcmToken();
+      await registerFcmToken(token, userInformation?.id || 0);
+    }
+
+    mutate(isActive);
   };
 
   return (
