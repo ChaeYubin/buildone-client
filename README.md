@@ -166,13 +166,13 @@ scale 조정으로 보다 선명한 화질로 이미지 저장|
 ## 기술 스택
 
 - 프레임워크 & 언어: <img src="https://img.shields.io/badge/NextJS 14 App Router-000000?style=flat-square&logo=nextdotjs&logoColor=white"/> <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white"/>
-- 스타일링: <img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?style=flat-square&logo=tailwind css&logoColor=white"/>
+- 스타일링: <img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?style=flat-square&logo=tailwind-css&logoColor=white"/>
 - 코드 품질 관리: <img src="https://img.shields.io/badge/ESLint-4B32C3?style=flat-square&logo=eslint&logoColor=white"/> <img src="https://img.shields.io/badge/Prettier-F7B93E?style=flat-square&logo=prettier&logoColor=black"/> <img src="https://img.shields.io/badge/Husky-5D4F85?style=flat-square&logoColor=white"/>
 - 데이터 요청 & 상태 관리: <img src="https://img.shields.io/badge/Tanstack Query-FF4154?style=flat-square&logo=react-query&logoColor=white"> <img src="https://img.shields.io/badge/Zustand-3E67B1?style=flat-square&logo=zustand&logoColor=white">
 - 유효성 검사 & 폼 관리: <img src="https://img.shields.io/badge/React Hook Form-EC5990?style=flat-square&logo=react-hook-form&logoColor=white"> <img src="https://img.shields.io/badge/Zod-3E67B1?style=flat-square&logo=zod&logoColor=white">
 - API 통신: <img src="https://img.shields.io/badge/Axios-5A29E4?style=flat-square&logo=axios&logoColor=white">
 - 푸시 알림: <img src="https://img.shields.io/badge/firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black">
-- 테스트 & 모니터링: <img src="https://img.shields.io/badge/Sentry-362D59?style=flat-square&logo=sentry&logoColor=white"> <img src="https://img.shields.io/badge/Jest-C21325?style=flat-square&logo=jest&logoColor=white">
+- 테스트: <img src="https://img.shields.io/badge/Jest-C21325?style=flat-square&logo=jest&logoColor=white">
 - 텍스트 편집기: <img src="https://img.shields.io/badge/Tiptap-5D4F85?style=flat-square&logoColor=white"/>
 - 배포: <img src="https://img.shields.io/badge/AWS Amplify-FF9900?style=flat-square&logo=aws amplify&logoColor=white">
 
