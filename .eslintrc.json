@@ -111,7 +111,7 @@
         "format": ["camelCase", "PascalCase", "UPPER_CASE"]
       }
     ],
-    // 아래 규칙들 에러가 왜 뜨는지 찾아봐야겠음
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "@typescript-eslint/lines-between-class-members": "off",
     "@typescript-eslint/no-throw-literal": "off",
     "no-nested-ternary": "off"

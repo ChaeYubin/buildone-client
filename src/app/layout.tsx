@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import FcmProvider from "@/lib/fcm-provider";
 import ResponsiveToaster from "@/lib/responsive-toaster";
 import TanstackQueryProvider from "@/lib/tanstack-query-provider";
+import { MockProvider } from "@/mocks/mock-provider";
 
 import type { Metadata } from "next";
 
@@ -23,6 +24,17 @@ export const metadata: Metadata = {
   },
 };
 
+if (
+  process.env.NEXT_RUNTIME === "nodejs" &&
+  process.env.MOCK_ENABLED === "true"
+) {
+  const { server } = await import("@/mocks/server");
+
+  server.listen({
+    onUnhandledRequest: "bypass",
+  });
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -33,8 +45,10 @@ export default function RootLayout({
       <body className={`${pretendard.variable} font-pretendard`}>
         <FcmProvider />
         <TanstackQueryProvider>
-          <ResponsiveToaster />
-          {children}
+          <MockProvider>
+            <ResponsiveToaster />
+            {children}
+          </MockProvider>
         </TanstackQueryProvider>
       </body>
     </html>
