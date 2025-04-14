@@ -1,31 +1,26 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    forceSwcTransforms: true,
-  },
   webpack: (config) => {
-    config.module.rules.push({
-      test: /\.svg$/i,
-      use: ["@svgr/webpack"],
-    });
+    const fileLoaderRule = config.module.rules.find((rule) =>
+      rule.test?.test?.(".svg"),
+    );
+
+    config.module.rules.push(
+      {
+        ...fileLoaderRule,
+        test: /\.svg$/i,
+        resourceQuery: /url/,
+      },
+      {
+        test: /\.svg$/i,
+        issuer: fileLoaderRule.issuer,
+        resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] },
+        use: ["@svgr/webpack"],
+      },
+    );
+
     return config;
   },
 };
 
-// module.exports = nextConfig;
-
-const { withSentryConfig } = require("@sentry/nextjs");
-
-module.exports = withSentryConfig(nextConfig, {
-  org: "bigroot",
-  project: "buildone",
-  silent: !process.env.CI,
-  widenClientFileUpload: true,
-  reactComponentAnnotation: {
-    enabled: process.env.NODE_ENV === "development",
-  },
-  tunnelRoute: "/monitoring",
-  disableLogger: true,
-});
+module.exports = nextConfig;

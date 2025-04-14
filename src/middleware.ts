@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { reissueAccessToken } from "./services/auth/token";
 
 export const middleware = async (request: NextRequest) => {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
 
   const accessToken = cookieStore.get("ACCESS_TOKEN")?.value;
   const refreshToken = cookieStore.get("REFRESH_TOKEN")?.value;

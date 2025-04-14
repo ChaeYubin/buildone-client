@@ -48,7 +48,7 @@ export default function Chip({
   size = "large",
   checked = false,
   onChange,
-}: ChipProps): JSX.Element {
+}: ChipProps) {
   return (
     <div className={getChipClass(color, size)} aria-label={`Chip: ${text}`}>
       <button

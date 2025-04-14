@@ -27,9 +27,11 @@
       "@/types/*": ["./src/types/*"],
       "@/utils/*": ["./src/utils/*"],
       "@/*": ["./src/*"]
-    }
+    },
+    "target": "ES2017"
   },
   "include": [
+    "svgr.d.ts",
     "next-env.d.ts",
     "**/*.js",
     "**/*.ts",

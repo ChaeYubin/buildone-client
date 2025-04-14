@@ -12,11 +12,7 @@ const BASE_CLASS = "items-center justify-center rounded-lg text-xs font-medium";
 const TITLE_CLASS = "h-5 bg-white-50 px-1 text-slate-800";
 const TEXT_CLASS = "text-slate-800";
 
-export default function Counting({
-  type,
-  count,
-  total,
-}: CountingProps): JSX.Element {
+export default function Counting({ type, count, total }: CountingProps) {
   if (type === "title") {
     return (
       <div
