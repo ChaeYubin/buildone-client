@@ -11,6 +11,7 @@ import Button from "@/components/@common/button";
 import { LOGIN_ERROR_CODE } from "@/constants/error";
 import { useDebounce } from "@/hooks/use-debounce";
 import { ApiError } from "@/lib/error";
+import { TEST_ACCOUNT } from "@/mocks/v1/auth/login";
 import { login } from "@/services/auth";
 import { useUserStore } from "@/store/user-store";
 
@@ -125,6 +126,17 @@ export default function LoginForm() {
         disabled={!isDirty || !isValid || isLoading}
       >
         {isLoading ? <LoadingSpinner size={20} /> : "로그인하기"}
+      </Button>
+      <Button
+        type="button"
+        className="mt-16 w-full"
+        onClick={() => onSubmit(TEST_ACCOUNT)}
+      >
+        {isLoading ? (
+          <LoadingSpinner size={20} />
+        ) : (
+          "테스트 계정으로 로그인하기"
+        )}
       </Button>
     </form>
   );

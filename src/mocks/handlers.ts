@@ -1,7 +1,3 @@
-import { http, HttpResponse } from "msw";
+import { AuthHandlers } from "./v1/auth";
 
-export const handlers = [
-  http.get(`${process.env.NEXT_PUBLIC_SERVER_ADDRESS}/api/mock-test`, () => {
-    return HttpResponse.json({ message: "mock success!!" });
-  }),
-];
+export const handlers = [...AuthHandlers];

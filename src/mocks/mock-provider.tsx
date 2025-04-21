@@ -7,7 +7,7 @@ import { Suspense, use } from "react";
 const enableMocking =
   typeof window !== "undefined"
     ? import("./browser").then(async ({ worker }) => {
-        if (process.env.MOCK_ENABLED !== "true") return;
+        if (process.env.NEXT_PUBLIC_MOCK_ENABLED !== "true") return;
 
         await worker.start({
           onUnhandledRequest(request, print) {
