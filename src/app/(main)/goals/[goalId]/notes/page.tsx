@@ -6,15 +6,11 @@ import { getNotesByGoalIdOptions } from "@/services/goal/note/query";
 import { getGoalOptions } from "@/services/goal/query";
 import "@/styles/note.css";
 
-interface NoteCollectionPageParams {
-  params: {
-    goalId: string;
-  };
-}
-
 export default async function NoteCollectionPage({
   params,
-}: NoteCollectionPageParams) {
+}: {
+  params: { goalId: string };
+}) {
   const goalId = Number(params.goalId);
   const queryClient = getQueryClient();
 
