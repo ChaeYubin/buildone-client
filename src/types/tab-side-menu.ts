@@ -1,4 +1,4 @@
-import { ReactNode, SetStateAction } from "react";
+import { JSX, ReactNode, SetStateAction } from "react";
 
 import {
   FetchNextPageOptions,

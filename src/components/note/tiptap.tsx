@@ -21,7 +21,7 @@ export default function Tiptap({
   setContents,
   onLinkSubmit,
   content = "",
-}: TiptapProps): JSX.Element {
+}: TiptapProps) {
   const editor = useEditor({
     editorProps: {
       attributes: {

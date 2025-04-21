@@ -26,12 +26,14 @@ export const DELETE = async (
   {
     params,
   }: {
-    params: { id: string };
+    params: Promise<{ id: string }>;
   },
 ) => {
-  if (!params.id) return NextResponse.json({ status: 400 });
+  const { id } = await params;
 
-  const todoIndex = todos.findIndex((todo) => todo.id === Number(params.id));
+  if (id) return NextResponse.json({ status: 400 });
+
+  const todoIndex = todos.findIndex((todo) => todo.id === Number(id));
 
   if (todoIndex === -1) return NextResponse.json({ status: 404 });
   todos.splice(todoIndex, 1);

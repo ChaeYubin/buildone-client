@@ -2,9 +2,11 @@ import { NextRequest } from "next/server";
 
 export const GET = async (
   request: NextRequest,
-  { params }: { params: { noteId: string } },
+  { params }: { params: Promise<{ noteId: string }> },
 ) => {
-  const noteId = Number(params.noteId);
+  const { noteId: noteIdString } = await params;
+
+  const noteId = Number(noteIdString);
   if (Number.isNaN(noteId)) {
     return new Response(
       JSON.stringify({

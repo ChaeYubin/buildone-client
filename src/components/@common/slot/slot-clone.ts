@@ -11,7 +11,7 @@ export default function SlotClone<T>(props: PropsWithChildren<T>) {
   const { children, ...slotProps } = props;
 
   if (isValidElement(children)) {
-    const childrenProps = children.props;
+    const childrenProps = children.props as Record<string, unknown>;
     return cloneElement(children, mergeProps(slotProps, childrenProps));
   }
 

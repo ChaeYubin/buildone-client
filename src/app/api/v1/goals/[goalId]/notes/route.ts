@@ -2,8 +2,9 @@ import { NextRequest } from "next/server";
 
 export const GET = async (
   request: NextRequest,
-  { params }: { params: { goalId: string } },
+  { params }: { params: Promise<{ goalId: string }> },
 ) => {
+  const { goalId } = await params;
   const { searchParams } = request.nextUrl;
   const sizeParam = searchParams.get("size");
 
@@ -31,7 +32,7 @@ export const GET = async (
   }
 
   // 404 에러
-  if (!params.goalId || params.goalId === "0") {
+  if (!goalId || goalId === "0") {
     return new Response(
       JSON.stringify({
         code: "NOT_FOUND_MEMBER",

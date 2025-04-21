@@ -30,10 +30,7 @@ interface DetailSheetProps {
 const SHEET_BUTTON_CLASS =
   "rounded-8 border border-slate-400 md:px-12 md:py-8 px-6 py-6 text-sm md:text-base font-normal text-slate-400 hover:font-semibold transition-all duration-300";
 
-export default function DetailSheet({
-  noteId,
-  linkUrl,
-}: DetailSheetProps): JSX.Element {
+export default function DetailSheet({ noteId, linkUrl }: DetailSheetProps) {
   const router = useRouter();
   const { data: note, error } = useQuery<NoteResponse, Error>({
     queryKey: noteKeys.detail(noteId),

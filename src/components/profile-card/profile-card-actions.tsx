@@ -9,7 +9,7 @@ import ShareIcon from "@/assets/profile-card/share.svg";
 import { errorToast } from "@/utils/custom-toast";
 
 interface ProfileCardActionsProps {
-  cardRef: RefObject<HTMLDivElement>;
+  cardRef: RefObject<HTMLDivElement | null>;
   userName: string | undefined;
 }
 

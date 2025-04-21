@@ -7,9 +7,7 @@ interface GoalProps {
   todo: TodoResponse;
 }
 
-export default function Goal({
-  todo: currentTodo,
-}: GoalProps): JSX.Element | null {
+export default function Goal({ todo: currentTodo }: GoalProps) {
   const { goalInformation } = currentTodo;
   if (!goalInformation) return null;
   return (

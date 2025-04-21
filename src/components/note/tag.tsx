@@ -14,10 +14,7 @@ interface TagInputProps {
   setTags: (tags: Tag[]) => void;
 }
 
-export default function TagInput({
-  tags,
-  setTags,
-}: TagInputProps): JSX.Element {
+export default function TagInput({ tags, setTags }: TagInputProps) {
   const [inputValue, setInputValue] = useState("");
 
   const createNewTag = (text: string): Tag => ({

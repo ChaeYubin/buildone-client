@@ -25,10 +25,7 @@ interface ToolbarProps {
   onLinkSubmit: (link: string) => void;
 }
 
-export default function Toolbar({
-  editor,
-  onLinkSubmit,
-}: ToolbarProps): JSX.Element | null {
+export default function Toolbar({ editor, onLinkSubmit }: ToolbarProps) {
   const [isLinkPopupOpen, setLinkPopupOpen] = useState(false);
   const [inputLink, setInputLink] = useState("");
 

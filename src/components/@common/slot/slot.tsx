@@ -4,6 +4,7 @@ import {
   HTMLAttributes,
   isValidElement,
   ReactNode,
+  ReactElement,
 } from "react";
 
 import isSlottable from "@/utils/react-utils/is-slottable";
@@ -21,14 +22,14 @@ export default function Slot(props: SlotProps) {
   const slottable = childrenArray.find(isSlottable);
 
   if (slottable) {
-    const newElement = slottable.props.children as React.ReactNode;
+    const newElement = slottable.props.children as ReactElement<{
+      children?: ReactNode;
+    }>;
 
     const newChildren = childrenArray.map((child) => {
       if (child === slottable) {
         if (Children.count(newElement) > 1) return Children.only(null);
-        return isValidElement(newElement)
-          ? (newElement.props.children as ReactNode)
-          : null;
+        return isValidElement(newElement) ? newElement.props.children : null;
       }
       return child;
     });
@@ -36,10 +37,11 @@ export default function Slot(props: SlotProps) {
     return (
       <SlotClone {...slotProps}>
         {isValidElement(newElement)
-          ? cloneElement(newElement, undefined, newChildren)
+          ? cloneElement(newElement, { ...newElement.props }, newChildren)
           : null}
       </SlotClone>
     );
   }
+
   return <SlotClone {...slotProps}>{children}</SlotClone>;
 }

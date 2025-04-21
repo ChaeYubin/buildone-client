@@ -14,7 +14,7 @@ import LoadingText from "./loading-text";
 import TagItem from "./tag-item";
 
 interface ProfileCardContentProps {
-  cardRef: RefObject<HTMLDivElement>;
+  cardRef: RefObject<HTMLDivElement | null>;
   loading: boolean;
   userName: string;
   streakGrade: number;

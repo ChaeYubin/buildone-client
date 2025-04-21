@@ -11,7 +11,7 @@ interface GoalTitleProps {
   setTitle: (newTitle: string) => void;
   editing: boolean;
   setEditing: (isEditing: boolean) => void;
-  inputRef: RefObject<HTMLInputElement>;
+  inputRef: RefObject<HTMLInputElement | null>;
 }
 
 export default function GoalTitle({
@@ -26,7 +26,7 @@ export default function GoalTitle({
   const { mutateAsync } = useUpdateGoal();
 
   const handleSave = async () => {
-    if (inputRef.current) {
+    if (inputRef?.current) {
       setEditing(false);
 
       if (title === previousTitle) {

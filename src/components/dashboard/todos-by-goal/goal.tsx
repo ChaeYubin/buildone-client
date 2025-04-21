@@ -6,9 +6,7 @@ interface GoalProps {
   todo: TodoResponse;
 }
 
-export default function Goal({
-  todo: currentTodo,
-}: GoalProps): JSX.Element | null {
+export default function Goal({ todo: currentTodo }: GoalProps) {
   // goalInformation이 없으면 렌더링하지 않음
   const { goalInformation, isDone } = currentTodo;
 

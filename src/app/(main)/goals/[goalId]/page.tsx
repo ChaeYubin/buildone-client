@@ -13,24 +13,23 @@ import { getInfiniteTodosByGoalIdOptions } from "@/services/todo/query";
 export default async function GoalDetailPage({
   params,
 }: {
-  params: { goalId: string };
+  params: Promise<{ goalId: string }>;
 }) {
+  const { goalId } = await params;
   const queryClient = getQueryClient();
 
   await Promise.all([
-    queryClient.prefetchQuery(getGoalOptions(Number(params.goalId))),
-    queryClient.prefetchQuery(
-      getProgressByGoalIdOptions(Number(params.goalId)),
-    ),
+    queryClient.prefetchQuery(getGoalOptions(Number(goalId))),
+    queryClient.prefetchQuery(getProgressByGoalIdOptions(Number(goalId))),
     queryClient.prefetchInfiniteQuery(
       getInfiniteTodosByGoalIdOptions({
-        goalId: Number(params.goalId),
+        goalId: Number(goalId),
         done: true,
       }),
     ),
     queryClient.prefetchInfiniteQuery(
       getInfiniteTodosByGoalIdOptions({
-        goalId: Number(params.goalId),
+        goalId: Number(goalId),
         done: false,
       }),
     ),
@@ -43,11 +42,11 @@ export default async function GoalDetailPage({
       <div className="px-16 py-16 max-lg:mx-auto md:px-24 md:py-24 lg:mx-80 lg:max-w-1200 lg:px-0">
         <h1 className="hidden text-lg font-semibold md:block">목표</h1>
         <div className="flex flex-col gap-16 md:gap-24">
-          <GoalSummary goalId={params.goalId} />
-          <RouteButtonToNotes goalId={params.goalId} />
+          <GoalSummary goalId={goalId} />
+          <RouteButtonToNotes goalId={goalId} />
           <div className="flex flex-col gap-16 md:gap-24 lg:flex-row lg:items-start">
-            <TodoList goalId={params.goalId} done={false} />
-            <TodoList goalId={params.goalId} done />
+            <TodoList goalId={goalId} done={false} />
+            <TodoList goalId={goalId} done />
           </div>
         </div>
       </div>

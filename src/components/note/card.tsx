@@ -15,7 +15,7 @@ interface NoteCardProps {
   note: NoteResponse;
 }
 
-export default function NoteCard({ note }: NoteCardProps): JSX.Element | null {
+export default function NoteCard({ note }: NoteCardProps) {
   const router = useRouter();
   const [modalOpen, setModalOpen] = useState(false);
   const [sheetOpen, setSheetOpen] = useState(false);

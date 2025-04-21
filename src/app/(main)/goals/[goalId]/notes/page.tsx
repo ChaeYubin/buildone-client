@@ -9,23 +9,25 @@ import "@/styles/note.css";
 export default async function NoteCollectionPage({
   params,
 }: {
-  params: { goalId: string };
+  params: Promise<{ goalId: string }>;
 }) {
-  const goalId = Number(params.goalId);
+  const { goalId } = await params;
+  const goalIdNumber = Number(goalId);
+
   const queryClient = getQueryClient();
 
   await Promise.all([
     queryClient.prefetchInfiniteQuery(
-      getNotesByGoalIdOptions({ goalId, size: 10 }),
+      getNotesByGoalIdOptions({ goalId: goalIdNumber, size: 10 }),
     ),
-    queryClient.prefetchQuery(getGoalOptions(goalId)),
+    queryClient.prefetchQuery(getGoalOptions(goalIdNumber)),
   ]);
 
   const dehydratedState = dehydrate(queryClient);
 
   return (
     <HydrationBoundary state={dehydratedState}>
-      <NoteCollectionClient goalId={goalId} />
+      <NoteCollectionClient goalId={goalIdNumber} />
     </HydrationBoundary>
   );
 }

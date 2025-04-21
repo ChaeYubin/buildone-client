@@ -14,7 +14,7 @@ export default function ToolbarButton({
   IconComponent,
   ariaLabel,
   isActive,
-}: ToolbarButtonProps): JSX.Element {
+}: ToolbarButtonProps) {
   return (
     <button
       onClick={onClick}

@@ -2,7 +2,7 @@
 
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 
 import Button from "@/components/@common/button";
 import Counting from "@/components/@common/counting";
@@ -28,14 +28,18 @@ import { dashboardKeys } from "@/services/query-key";
 import { successToast } from "@/utils/custom-toast";
 import { countWithoutSpaces, countWithSpaces } from "@/utils/text-utils";
 
-export default function NotesPage({ params }: { params: { todoId: string } }) {
+export default function NotesPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const noteIdParam = searchParams.get("noteId");
+
   // noteId가 있으면 수정모드, 없으면 새로 작성하는 모드
   const noteId = noteIdParam ? Number(noteIdParam) : null;
+
   // [todoId]는 라우트 동적 세그먼트에서 추출
+  const params = useParams<{ todoId: string }>();
   const todoId = Number(params.todoId);
+
   const isEditMode = noteId !== null;
 
   const [title, setTitle] = useState<string>("");

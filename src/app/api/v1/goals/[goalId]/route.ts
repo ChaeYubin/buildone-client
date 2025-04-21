@@ -29,9 +29,11 @@ const goalsMockData: GoalResponse[] = [
 
 export const GET = async (
   request: Request,
-  { params }: { params: { goalId: string } },
+  { params }: { params: Promise<{ goalId: string }> },
 ) => {
-  const goalId = Number(params.goalId);
+  const { goalId: goalIdString } = await params;
+
+  const goalId = Number(goalIdString);
   const goal = goalsMockData.find((g) => g.id === goalId);
 
   if (goal) {
@@ -53,9 +55,11 @@ export const GET = async (
 
 export const DELETE = async (
   request: Request,
-  { params }: { params: { goalId: string } },
+  { params }: { params: Promise<{ goalId: string }> },
 ) => {
-  const goalId = Number(params.goalId);
+  const { goalId: goalIdString } = await params;
+
+  const goalId = Number(goalIdString);
   const goal = goalsMockData.find((g) => g.id === goalId);
   const goalIndex = goalsMockData.findIndex((g) => g.id === goalId);
 
@@ -80,11 +84,12 @@ export const DELETE = async (
 
 export const PUT = async (
   request: Request,
-  { params }: { params: { goalId: string } },
+  { params }: { params: Promise<{ goalId: string }> },
 ) => {
+  const { goalId: goalIdString } = await params;
   const { title: newTitle } = await request.json();
 
-  const goalId = Number(params.goalId);
+  const goalId = Number(goalIdString);
   const goal = goalsMockData.find((g) => g.id === goalId);
   const goalIndex = goalsMockData.findIndex((g) => g.id === goalId);
 
