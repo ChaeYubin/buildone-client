@@ -16,9 +16,9 @@ import ExportProfileCardButton from "../profile-card/export-profile-card-button"
 import AddGoalSection from "./add-goal-section";
 import GoalsList from "./goals-list";
 import Logo from "./logo";
-import PushNotificationSettingButton from "./push-notification-setting-button";
 import TabToggle from "./tab-toggle";
 import TodosMenu from "./todos-menu";
+import UnsupportedPushNotificationSettingButton from "./unsupported-push-notification-setting-button-ui";
 import UserProfile from "./user-profile";
 
 const containerStyle = cva(
@@ -160,7 +160,8 @@ export default function TabSideMenu() {
         {!isTabMinimized && (
           <div className="absolute bottom-0 mb-36 flex w-full flex-col items-center gap-y-4">
             <ExportProfileCardButton />
-            <PushNotificationSettingButton />
+            {/* <PushNotificationSettingButton /> */}
+            <UnsupportedPushNotificationSettingButton />
           </div>
         )}
       </div>

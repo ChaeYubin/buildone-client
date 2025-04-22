@@ -1,6 +1,5 @@
 import localFont from "next/font/local";
 
-import FcmProvider from "@/lib/fcm-provider";
 import ResponsiveToaster from "@/lib/responsive-toaster";
 import TanstackQueryProvider from "@/lib/tanstack-query-provider";
 import { MockProvider } from "@/mocks/mock-provider";
@@ -43,7 +42,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={`${pretendard.variable} font-pretendard`}>
-        <FcmProvider />
+        {/* <FcmProvider /> */}
         <TanstackQueryProvider>
           <MockProvider>
             <ResponsiveToaster />
