@@ -4,7 +4,7 @@ import { ENDPOINT } from "@/services/endpoint";
 import { GoalListResponse } from "@/types/goal";
 
 import { createGoal, deleteGoal, getGoal, updateGoal } from "./[goalId]";
-import { GOAL_LIST_MOCK_DATA } from "./mock-data";
+import { GOAL_MOCK_DATA } from "./mock-data";
 import { getGoalProgress } from "./progress";
 
 export const getGoals = http.get<never, never, GoalListResponse>(
@@ -20,7 +20,7 @@ export const getGoals = http.get<never, never, GoalListResponse>(
         ? "newest"
         : searchParams.get("sortOrder");
 
-    const sortedGoals = [...GOAL_LIST_MOCK_DATA.goals].sort((a, b) => {
+    const sortedGoals = [...GOAL_MOCK_DATA].sort((a, b) => {
       if (sortOrder === "newest") {
         return b.id - a.id;
       }

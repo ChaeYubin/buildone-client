@@ -5,7 +5,7 @@ import { TodoParams } from "@/services/todo";
 import { CommonResponseError } from "@/types/index";
 import { TodoResponse } from "@/types/todo";
 
-import { GOAL_LIST_MOCK_DATA } from "../goal/mock-data";
+import { GOAL_MOCK_DATA } from "../goal/mock-data";
 
 import { TODO_MOCK_DATA } from "./mock-data";
 
@@ -18,9 +18,7 @@ export const createTodo = http.post<
   async ({ request }) => {
     const { title, fileUrl, linkUrl, isDone, goalId } = await request.json();
 
-    const goal = goalId
-      ? GOAL_LIST_MOCK_DATA.goals.find((g) => g.id === goalId)
-      : null;
+    const goal = goalId ? GOAL_MOCK_DATA.find((g) => g.id === goalId) : null;
 
     if (goalId && !goal) {
       return HttpResponse.json(

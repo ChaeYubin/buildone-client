@@ -1,6 +1,6 @@
 import { TodoResponse } from "@/types/todo";
 
-import { GOAL_LIST_MOCK_DATA } from "../goal/mock-data";
+import { GOAL_MOCK_DATA } from "../goal/mock-data";
 
 export const TODO_MOCK_DATA: TodoResponse[] = [
   {
@@ -19,8 +19,8 @@ export const TODO_MOCK_DATA: TodoResponse[] = [
     noteId: null,
     title: "리렌더링 성능 최적화 실습",
     goalInformation: {
-      id: GOAL_LIST_MOCK_DATA.goals[0].id,
-      title: GOAL_LIST_MOCK_DATA.goals[0].title,
+      id: GOAL_MOCK_DATA[0].id,
+      title: GOAL_MOCK_DATA[0].title,
     },
     linkUrl: null,
     fileUrl: null,
@@ -33,8 +33,8 @@ export const TODO_MOCK_DATA: TodoResponse[] = [
     noteId: null,
     title: "리액트 Fiber 이해하기",
     goalInformation: {
-      id: GOAL_LIST_MOCK_DATA.goals[0].id,
-      title: GOAL_LIST_MOCK_DATA.goals[0].title,
+      id: GOAL_MOCK_DATA[0].id,
+      title: GOAL_MOCK_DATA[0].title,
     },
     linkUrl: null,
     fileUrl: null,
@@ -47,8 +47,8 @@ export const TODO_MOCK_DATA: TodoResponse[] = [
     noteId: null,
     title: "Next.js 공식문서 읽기",
     goalInformation: {
-      id: GOAL_LIST_MOCK_DATA.goals[1].id,
-      title: GOAL_LIST_MOCK_DATA.goals[1].title,
+      id: GOAL_MOCK_DATA[1].id,
+      title: GOAL_MOCK_DATA[1].title,
     },
     linkUrl: null,
     fileUrl: null,
@@ -61,8 +61,8 @@ export const TODO_MOCK_DATA: TodoResponse[] = [
     noteId: null,
     title: "알고리즘 문제 풀기 - 1일차",
     goalInformation: {
-      id: GOAL_LIST_MOCK_DATA.goals[2].id,
-      title: GOAL_LIST_MOCK_DATA.goals[2].title,
+      id: GOAL_MOCK_DATA[2].id,
+      title: GOAL_MOCK_DATA[2].title,
     },
     linkUrl: null,
     fileUrl: null,
@@ -75,8 +75,8 @@ export const TODO_MOCK_DATA: TodoResponse[] = [
     noteId: null,
     title: "알고리즘 문제 풀기 - 2일차",
     goalInformation: {
-      id: GOAL_LIST_MOCK_DATA.goals[2].id,
-      title: GOAL_LIST_MOCK_DATA.goals[2].title,
+      id: GOAL_MOCK_DATA[2].id,
+      title: GOAL_MOCK_DATA[2].title,
     },
     linkUrl: null,
     fileUrl: null,
@@ -89,8 +89,8 @@ export const TODO_MOCK_DATA: TodoResponse[] = [
     noteId: null,
     title: "알고리즘 문제 풀기 - 3일차",
     goalInformation: {
-      id: GOAL_LIST_MOCK_DATA.goals[2].id,
-      title: GOAL_LIST_MOCK_DATA.goals[2].title,
+      id: GOAL_MOCK_DATA[2].id,
+      title: GOAL_MOCK_DATA[2].title,
     },
     linkUrl: null,
     fileUrl: null,
@@ -103,8 +103,8 @@ export const TODO_MOCK_DATA: TodoResponse[] = [
     noteId: null,
     title: "알고리즘 문제 풀기 - 4일차",
     goalInformation: {
-      id: GOAL_LIST_MOCK_DATA.goals[2].id,
-      title: GOAL_LIST_MOCK_DATA.goals[2].title,
+      id: GOAL_MOCK_DATA[2].id,
+      title: GOAL_MOCK_DATA[2].title,
     },
     linkUrl: null,
     fileUrl: null,
@@ -117,8 +117,8 @@ export const TODO_MOCK_DATA: TodoResponse[] = [
     noteId: null,
     title: "알고리즘 문제 풀기 - 5일차",
     goalInformation: {
-      id: GOAL_LIST_MOCK_DATA.goals[2].id,
-      title: GOAL_LIST_MOCK_DATA.goals[2].title,
+      id: GOAL_MOCK_DATA[2].id,
+      title: GOAL_MOCK_DATA[2].title,
     },
     linkUrl: null,
     fileUrl: null,

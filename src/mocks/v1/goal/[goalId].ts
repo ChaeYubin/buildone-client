@@ -4,7 +4,7 @@ import { ENDPOINT } from "@/services/endpoint";
 import { GoalResponse } from "@/types/goal";
 import { CommonResponseError } from "@/types/index";
 
-import { GOAL_LIST_MOCK_DATA } from "./mock-data";
+import { GOAL_MOCK_DATA } from "./mock-data";
 
 interface GoalParams {
   goalId: string;
@@ -19,7 +19,7 @@ export const getGoal = http.get<
   async ({ params }) => {
     const { goalId } = params;
 
-    const goal = GOAL_LIST_MOCK_DATA.goals.find((g) => g.id === Number(goalId));
+    const goal = GOAL_MOCK_DATA.find((g) => g.id === Number(goalId));
 
     if (!goal) {
       return HttpResponse.json(
@@ -49,13 +49,13 @@ export const createGoal = http.post<
     const { title } = await request.json();
 
     const newGoal = {
-      id: Math.max(...GOAL_LIST_MOCK_DATA.goals.map((g) => g.id), 0) + 1,
+      id: Math.max(...GOAL_MOCK_DATA.map((g) => g.id), 0) + 1,
       title,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     };
 
-    GOAL_LIST_MOCK_DATA.goals.push(newGoal);
+    GOAL_MOCK_DATA.push(newGoal);
 
     return HttpResponse.json(
       {
@@ -71,7 +71,7 @@ export const deleteGoal = http.delete<GoalParams>(
   async ({ params }) => {
     const { goalId } = params;
 
-    const goalIndex = GOAL_LIST_MOCK_DATA.goals.findIndex(
+    const goalIndex = GOAL_MOCK_DATA.findIndex(
       (goal) => goal.id === Number(goalId),
     );
 
@@ -85,7 +85,7 @@ export const deleteGoal = http.delete<GoalParams>(
       );
     }
 
-    GOAL_LIST_MOCK_DATA.goals.splice(goalIndex, 1);
+    GOAL_MOCK_DATA.splice(goalIndex, 1);
 
     return HttpResponse.json({}, { status: 200 });
   },
@@ -97,7 +97,7 @@ export const updateGoal = http.put<GoalParams, { title: string }>(
     const { goalId } = params;
     const { title } = await request.json();
 
-    const goalIndex = GOAL_LIST_MOCK_DATA.goals.findIndex(
+    const goalIndex = GOAL_MOCK_DATA.findIndex(
       (goal) => goal.id === Number(goalId),
     );
 
@@ -111,8 +111,8 @@ export const updateGoal = http.put<GoalParams, { title: string }>(
       );
     }
 
-    GOAL_LIST_MOCK_DATA.goals[goalIndex].updatedAt = new Date().toISOString();
-    GOAL_LIST_MOCK_DATA.goals[goalIndex].title = title;
+    GOAL_MOCK_DATA[goalIndex].updatedAt = new Date().toISOString();
+    GOAL_MOCK_DATA[goalIndex].title = title;
 
     return HttpResponse.json({}, { status: 200 });
   },
