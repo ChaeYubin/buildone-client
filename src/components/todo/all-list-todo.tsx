@@ -15,11 +15,17 @@ import { getInfiniteTodosByGoalIdOptions } from "@/services/todo/query";
 import Filter from "../@common/filter";
 import TodoModal from "../todo-modal/todo-modal";
 
-interface TodoLengths {
+export interface TodoLengths {
   AllCount: number;
   todoCount: number;
   doneCount: number;
 }
+
+const filterOptions = {
+  all: "모든 할 일",
+  todo: "할 일",
+  done: "완료한 일",
+} as const;
 
 export default function AllListTodo() {
   const [filter, setFilter] = useState<"all" | "todo" | "done">("all");
@@ -50,13 +56,22 @@ export default function AllListTodo() {
     queryFn: () => getTodosLengths(),
   });
 
+  const getTodoCount = () => {
+    if (isLoading) return 0;
+    if (filter === "all") return todosLengths?.AllCount;
+    if (filter === "done") return todosLengths?.doneCount;
+    if (filter === "todo") return todosLengths?.todoCount;
+
+    return 0;
+  };
+
   return (
     <>
       <div className="mb-16 mt-24 flex items-center justify-between">
         <h2 className="text-18 font-semibold text-slate-900">
-          모든 할 일 (
+          {filterOptions[filter]} (
           <span className={cn(isLoading && "animate-pulse")}>
-            {isLoading ? 0 : todosLengths?.AllCount}
+            {getTodoCount()}
           </span>
           )
         </h2>
@@ -72,9 +87,7 @@ export default function AllListTodo() {
         <Filter filter={filter} setFilter={setFilter} />
         <ul className="flex flex-col gap-8">
           {todos?.length !== 0 ? (
-            todos?.map((todo, index) => (
-              <Todo key={todo.id} index={index} todo={todo} showGoal />
-            ))
+            todos?.map((todo) => <Todo key={todo.id} todo={todo} showGoal />)
           ) : (
             <div
               className="flex w-full items-center justify-center text-center"
