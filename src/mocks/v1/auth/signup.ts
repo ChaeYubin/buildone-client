@@ -3,7 +3,7 @@ import { http, HttpResponse } from "msw";
 import { SIGNUP_ERROR_CODE } from "@/constants/error";
 import { ENDPOINT } from "@/services/endpoint";
 
-import { ACCOUNTS_MOCK_DATA } from "./login";
+import { ACCOUNTS_MOCK_DATA } from "./mock-data";
 
 interface RequestBody {
   name: string;

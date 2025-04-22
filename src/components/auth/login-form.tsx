@@ -11,7 +11,7 @@ import Button from "@/components/@common/button";
 import { LOGIN_ERROR_CODE } from "@/constants/error";
 import { useDebounce } from "@/hooks/use-debounce";
 import { ApiError } from "@/lib/error";
-import { TEST_ACCOUNT } from "@/mocks/v1/auth/login";
+import { TEST_ACCOUNT } from "@/mocks/v1/auth/mock-data";
 import { login } from "@/services/auth";
 import { useUserStore } from "@/store/user-store";
 
