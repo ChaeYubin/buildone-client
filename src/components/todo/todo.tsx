@@ -23,7 +23,6 @@ import TodoDeletePopup from "./todo-delete-popup";
 
 interface Props {
   todo: TodoResponse;
-  index: number;
   showGoal?: boolean;
 }
 interface DropdownItem {
@@ -32,7 +31,7 @@ interface DropdownItem {
   onClick: () => void;
 }
 
-export default function Todo({ todo, index, showGoal }: Props) {
+export default function Todo({ todo, showGoal }: Props) {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeletePopupOpen, setIsDeletePopupOpen] = useState(false);
   const [sheetOpen, setSheetOpen] = useState(false);
@@ -137,7 +136,7 @@ export default function Todo({ todo, index, showGoal }: Props) {
         )}
       >
         <div className="flex items-center justify-between">
-          <TodoTitleAndCheckBox index={index} todo={todo} />
+          <TodoTitleAndCheckBox todo={todo} />
           <div
             role="group"
             aria-label="할일 관련 작업"

@@ -5,12 +5,10 @@ import { cn } from "@/lib/cn";
 import { TodoResponse } from "@/types/todo";
 
 interface TodoTitleAndCheckBoxProps {
-  index: number;
   todo: TodoResponse;
 }
 
 export default function TodoTitleAndCheckBox({
-  index,
   todo,
 }: TodoTitleAndCheckBoxProps) {
   const { isDone } = todo;
@@ -24,13 +22,13 @@ export default function TodoTitleAndCheckBox({
       )}
     >
       <label
-        htmlFor={`todo-check-${index}`}
+        htmlFor={`todo-check-${todo.id}`}
         className="relative flex cursor-pointer items-center hover:drop-shadow"
         aria-label={`${todo.title} ${isDone ? "완료됨" : "미완료"}`}
       >
         <input
           type="checkbox"
-          id={`todo-check-${index}`}
+          id={`todo-check-${todo.id}`}
           checked={isDone}
           aria-checked={isDone}
           onChange={() =>
