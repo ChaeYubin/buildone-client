@@ -154,7 +154,7 @@ function PopupContent({ children, className }: ComponentProps<"div">) {
             role="dialog"
             aria-modal="true"
             className={cn(
-              "fixed left-[50%] top-[50%] z-[80] flex w-full max-w-300 translate-x-[-50%] translate-y-[-50%] flex-col gap-24 rounded-lg border bg-white px-16 py-24 pb-26 pt-24 shadow-xl md:max-w-450 md:px-24",
+              "fixed left-[50%] top-[50%] z-[80] flex w-full max-w-300 translate-x-[-50%] translate-y-[-50%] flex-col gap-16 rounded-lg border bg-white px-16 py-24 pb-26 pt-40 shadow-xl md:max-w-450 md:px-24",
               className,
             )}
             initial={{ opacity: 0 }}
