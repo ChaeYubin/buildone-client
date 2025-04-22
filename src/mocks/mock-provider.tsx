@@ -10,12 +10,7 @@ const enableMocking =
         if (process.env.NEXT_PUBLIC_MOCK_ENABLED !== "true") return;
 
         await worker.start({
-          onUnhandledRequest(request, print) {
-            if (request.url.includes("_next")) return;
-            if (request.url.includes("_rsc")) return;
-
-            print.warning();
-          },
+          onUnhandledRequest: "bypass",
         });
         console.log(worker.listHandlers());
       })
