@@ -14,7 +14,7 @@ export const getRecentTodos = http.get<
   async () => {
     return HttpResponse.json(
       {
-        todos: TODO_MOCK_DATA.slice(0, 4),
+        todos: TODO_MOCK_DATA.slice(-4).reverse(),
       },
       { status: 200 },
     );
