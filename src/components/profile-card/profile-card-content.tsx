@@ -100,9 +100,11 @@ export default function ProfileCardContent({
                     <p className="text-base font-bold md:text-xl">최근 목표</p>
                   </div>
                   <ul className="text-center text-xs font-normal leading-normal md:text-base md:leading-6">
-                    {data?.recentGoals.map((goal) => (
-                      <li key={goal}>· {goal}</li>
-                    ))}
+                    {data?.recentGoals.length === 0
+                      ? "최근 추가한 목표가 없어요"
+                      : data?.recentGoals.map((goal) => (
+                          <li key={goal}>· {goal}</li>
+                        ))}
                   </ul>
                 </div>
                 <div className="space-y-8 md:space-y-12">
@@ -113,9 +115,11 @@ export default function ProfileCardContent({
                     </p>
                   </div>
                   <ul className="flex justify-center gap-x-6 md:gap-x-8">
-                    {data?.mostlyNoteTags.map((tag) => (
-                      <TagItem tag={tag} key={tag} />
-                    ))}
+                    {data?.mostlyNoteTags.length === 0
+                      ? "사용한 태그가 없어요"
+                      : data?.mostlyNoteTags.map((tag) => (
+                          <TagItem tag={tag} key={tag} />
+                        ))}
                   </ul>
                   <div className="text-center text-xs font-normal md:text-base" />
                 </div>
