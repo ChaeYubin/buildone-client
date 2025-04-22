@@ -58,11 +58,7 @@ export default function TodoList({ goalId, done }: TodoListProps) {
           >
             <ul className="flex flex-col gap-8 pr-5">
               {data.todos.map((todo) => (
-                <Todo
-                  key={`todo-list-by-goal-${todo.id}`}
-                  index={todo.id}
-                  todo={todo}
-                />
+                <Todo key={`todo-list-by-goal-${todo.id}`} todo={todo} />
               ))}
             </ul>
             {hasNextPage && (

@@ -10,9 +10,9 @@ export default function GoalsListComponent({
 }: GoalsListComponentProps) {
   return (
     <ul className="space-y-15 pb-20">
-      {recentTodos.map((todo, index) => (
+      {recentTodos.map((todo) => (
         <li key={todo.id} className="flex flex-col">
-          <TodoTitleAndCheckBox index={index} todo={todo} />
+          <TodoTitleAndCheckBox todo={todo} />
           <Goal todo={todo} />
         </li>
       ))}

@@ -43,11 +43,7 @@ export default function TodoListByDone({
       {data.todos.length > 0 && (
         <ul className="flex flex-col gap-8">
           {data.todos.map((todo) => (
-            <Todo
-              key={`todo-list-by-goal-${todo.id}`}
-              index={todo.id}
-              todo={todo}
-            />
+            <Todo key={`todo-list-by-goal-${todo.id}`} todo={todo} />
           ))}
         </ul>
       )}
