@@ -3,3 +3,8 @@ export interface CommonPaginationInformationResponse {
   totalCount: number;
   hasNext: boolean;
 }
+
+export interface CommonResponseError {
+  code: string;
+  message: string;
+}
