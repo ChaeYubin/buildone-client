@@ -7,11 +7,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { z } from "zod";
 
+import { TEST_ACCOUNT } from "@/app/api/v1/auth/mock-data";
 import Button from "@/components/@common/button";
 import { LOGIN_ERROR_CODE } from "@/constants/error";
 import { useDebounce } from "@/hooks/use-debounce";
 import { ApiError } from "@/lib/error";
-import { TEST_ACCOUNT } from "@/mocks/v1/auth/mock-data";
 import { login } from "@/services/auth";
 import { useUserStore } from "@/store/user-store";
 
