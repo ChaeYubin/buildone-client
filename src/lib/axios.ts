@@ -11,7 +11,10 @@ import { getCookie, setCookie } from "@/utils/cookie";
 import { ApiError } from "./error";
 
 export const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_SERVER_ADDRESS,
+  baseURL:
+    process.env.NEXT_PUBLIC_MOCK_ENABLED === "true"
+      ? ""
+      : process.env.NEXT_PUBLIC_SERVER_ADDRESS,
   withCredentials: true,
 });
 
