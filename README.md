@@ -142,8 +142,8 @@ scale 조정으로 보다 선명한 화질로 이미지 저장|
 2. `buildone-client` 디렉토리의 최상위에 `.env.local` 파일 생성 후 아래와 같이 작성합니다.
 
    ```
-   NEXT_PUBLIC_SERVER_ADDRESS=http://localhost:3000
-   ```
+   NEXT_PUBLIC_MOCK_ENABLED=true  
+    ``` 
 
 3. 터미널에서 아래 명령어를 차례대로 입력합니다.
 
@@ -158,23 +158,24 @@ scale 조정으로 보다 선명한 화질로 이미지 저장|
 
 ## 배포 주소
 
-- https://buildone.me (현재 백엔드 서버가 동작하고 있지 않습니다.)
-- https://buildone-client.vercel.app (프론트엔드 배포 버전을 확인하실 수 있습니다.)
+- https://buildone.me (현재 백엔드 서버가 동작하지 않는 상태입니다.)
+- https://buildone-client.vercel.app (프론트엔드 배포 버전입니다. Next.js API Route Handler를 활용해 요청을 모킹하여 동작하도록 구현되어 있으며, 현재 푸시 알림과 파일 업로드 기능을 제외한 모든 기능을 테스트하실 수 있습니다.)
+
+> 💡 프로젝트 초기에는 AWS를 사용해 인프라를 구성하고 배포했으며, 현재는 개인 리팩토링 버전으로 Vercel을 이용해 간편하게 배포하고 있습니다.
 
 <br>
 
 ## 기술 스택
 
-- 프레임워크 & 언어: <img src="https://img.shields.io/badge/NextJS 14 App Router-000000?style=flat-square&logo=nextdotjs&logoColor=white"/> <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white"/>
+- 프레임워크 & 언어: <img src="https://img.shields.io/badge/NextJS 15 App Router-000000?style=flat-square&logo=nextdotjs&logoColor=white"/> <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white"/>
 - 스타일링: <img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?style=flat-square&logo=tailwind-css&logoColor=white"/>
 - 코드 품질 관리: <img src="https://img.shields.io/badge/ESLint-4B32C3?style=flat-square&logo=eslint&logoColor=white"/> <img src="https://img.shields.io/badge/Prettier-F7B93E?style=flat-square&logo=prettier&logoColor=black"/> <img src="https://img.shields.io/badge/Husky-5D4F85?style=flat-square&logoColor=white"/>
 - 데이터 요청 & 상태 관리: <img src="https://img.shields.io/badge/Tanstack Query-FF4154?style=flat-square&logo=react-query&logoColor=white"> <img src="https://img.shields.io/badge/Zustand-3E67B1?style=flat-square&logo=zustand&logoColor=white">
 - 유효성 검사 & 폼 관리: <img src="https://img.shields.io/badge/React Hook Form-EC5990?style=flat-square&logo=react-hook-form&logoColor=white"> <img src="https://img.shields.io/badge/Zod-3E67B1?style=flat-square&logo=zod&logoColor=white">
 - API 통신: <img src="https://img.shields.io/badge/Axios-5A29E4?style=flat-square&logo=axios&logoColor=white">
 - 푸시 알림: <img src="https://img.shields.io/badge/firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black">
-- 테스트: <img src="https://img.shields.io/badge/Jest-C21325?style=flat-square&logo=jest&logoColor=white">
 - 텍스트 편집기: <img src="https://img.shields.io/badge/Tiptap-5D4F85?style=flat-square&logoColor=white"/>
-- 배포: <img src="https://img.shields.io/badge/AWS Amplify-FF9900?style=flat-square&logo=aws amplify&logoColor=white">
+- 배포: <img src="https://img.shields.io/badge/AWS Amplify-FF9900?style=flat-square&logo=aws&logoColor=white"> <img src="https://img.shields.io/badge/vercel-000000?style=flat-square&logo=vercel&logoColor=white"> 
 
 <br>
 
