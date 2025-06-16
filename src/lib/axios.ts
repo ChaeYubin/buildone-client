@@ -10,11 +10,21 @@ import { getCookie, setCookie } from "@/utils/cookie";
 
 import { ApiError } from "./error";
 
+const isMockEnabled = process.env.NEXT_PUBLIC_MOCK_ENABLED;
+const isProduction = process.env.NODE_ENV === "production";
+
+const getBaseURL = () => {
+  if (isMockEnabled) {
+    return isProduction
+      ? process.env.NEXT_PUBLIC_SITE_URL
+      : process.env.NEXT_PUBLIC_LOCAL_SITE_URL;
+  }
+
+  return process.env.NEXT_PUBLIC_SERVER_ADDRESS;
+};
+
 export const api = axios.create({
-  baseURL:
-    process.env.NEXT_PUBLIC_MOCK_ENABLED === "true"
-      ? ""
-      : process.env.NEXT_PUBLIC_SERVER_ADDRESS,
+  baseURL: getBaseURL(),
   withCredentials: true,
 });
 
