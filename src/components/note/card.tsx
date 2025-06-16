@@ -8,7 +8,7 @@ import Dropdown from "@/components/@common/dropdown/dropdown";
 import Modal from "@/components/@common/portal/modal";
 import Sheet from "@/components/@common/portal/sheet";
 import DetailSheet from "@/components/note/detail-sheet";
-import { useDeleteNote, useNoteDetail } from "@/hooks/query/use-notes";
+import { useDeleteNote } from "@/hooks/query/use-notes";
 import { NoteResponse } from "@/types/note";
 
 interface NoteCardProps {
@@ -21,8 +21,6 @@ export default function NoteCard({ note }: NoteCardProps) {
   const [sheetOpen, setSheetOpen] = useState(false);
 
   const { mutate: deleteNote } = useDeleteNote();
-
-  const { data: detailedNote } = useNoteDetail(note.id);
 
   return (
     <Modal.Root open={modalOpen} onOpenChange={setModalOpen}>
@@ -44,7 +42,7 @@ export default function NoteCard({ note }: NoteCardProps) {
         </div>
 
         <Sheet.Root open={sheetOpen} onOpenChange={setSheetOpen}>
-          <DetailSheet noteId={note.id} linkUrl={detailedNote?.linkUrl} />
+          <DetailSheet noteId={note.id} linkUrl={note?.linkUrl} />
           <Sheet.Trigger className="h-40 w-full border-b border-b-slate-200 text-left font-medium">
             {note.title}
           </Sheet.Trigger>
@@ -52,7 +50,7 @@ export default function NoteCard({ note }: NoteCardProps) {
 
         {/* 태그와 todo */}
         <div className="mt-12 flex flex-wrap gap-8 text-xs text-slate-700">
-          {(detailedNote?.tags || []).map((tag) => (
+          {(note?.tags || []).map((tag) => (
             <span
               key={tag}
               className="truncate rounded-4 bg-slate-100 px-3 py-2 font-medium"
