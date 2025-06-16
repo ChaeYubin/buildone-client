@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import Profile from "@/assets/icons-big/profile.svg";
 import { logout } from "@/services/auth";
 import { useUserStore } from "@/store/user-store";
-import { successToast } from "@/utils/custom-toast";
+import { errorToast, successToast } from "@/utils/custom-toast";
 
 import Skeleton from "../@common/skeleton";
 import TodoModal from "../todo-modal/todo-modal";
@@ -42,10 +42,14 @@ export default function UserProfile({ isTabOpen }: { isTabOpen: boolean }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const logoutHandler = async () => {
-    logout();
+    try {
+      await logout();
 
-    successToast("logout", "로그아웃 되었습니다.");
-    router.push("/login");
+      successToast("logout", "로그아웃 되었습니다.");
+      router.push("/login");
+    } catch (error) {
+      errorToast("logout", "로그아웃 오류가 발생했습니다.");
+    }
   };
 
   return (
