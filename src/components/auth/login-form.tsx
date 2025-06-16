@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,7 +16,6 @@ import { login } from "@/services/auth";
 import { useUserStore } from "@/store/user-store";
 
 import LabeledInput from "../@common/input/labeled-input";
-import LoadingSpinner from "../@common/loading-spinner";
 
 const loginSchema = z.object({
   email: z
@@ -32,8 +31,6 @@ type LoginSchemaKey = keyof LoginSchema;
 export default function LoginForm() {
   const router = useRouter();
   const { setUserInfo } = useUserStore();
-
-  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
@@ -61,8 +58,6 @@ export default function LoginForm() {
   }, [debouncedEmail, trigger]);
 
   const onSubmit = async (data: LoginSchema) => {
-    setIsLoading(true);
-
     try {
       const response = await login(data.email, data.password);
 
@@ -70,8 +65,6 @@ export default function LoginForm() {
 
       router.push("/dashboard");
     } catch (error: unknown) {
-      setIsLoading(false);
-
       if (error instanceof ApiError) {
         if (
           error.code === LOGIN_ERROR_CODE.INVALID_EMAIL_FORMAT ||
@@ -123,20 +116,16 @@ export default function LoginForm() {
       <Button
         type="submit"
         className="mt-48 w-full"
-        disabled={!isDirty || !isValid || isLoading}
+        disabled={!isDirty || !isValid}
       >
-        {isLoading ? <LoadingSpinner size={20} /> : "로그인하기"}
+        로그인하기
       </Button>
       <Button
         type="button"
         className="mt-16 w-full"
         onClick={() => onSubmit(TEST_ACCOUNT)}
       >
-        {isLoading ? (
-          <LoadingSpinner size={20} />
-        ) : (
-          "테스트 계정으로 로그인하기"
-        )}
+        테스트 계정으로 로그인하기
       </Button>
     </form>
   );
