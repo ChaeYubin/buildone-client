@@ -1,12 +1,16 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
+import {
+  useSuspenseInfiniteQuery,
+  useSuspenseQuery,
+} from "@tanstack/react-query";
 
 import FlagGoalSmall from "@/assets/icons-big/flag_goal_small.svg";
 import Card from "@/components/note/card";
-import { useInfiniteNotesByGoalId } from "@/hooks/query/use-notes";
 import { useInfiniteScroll } from "@/hooks/use-infinite-scroll";
+import { getNotesByGoalIdOptions } from "@/services/goal/note/query";
 import { getGoalOptions } from "@/services/goal/query";
+
 import "@/styles/note.css";
 
 interface NoteCollectionClientProps {
@@ -21,9 +25,9 @@ export default function NoteCollectionClient({
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-  } = useInfiniteNotesByGoalId({ goalId, size: 10 });
+  } = useSuspenseInfiniteQuery(getNotesByGoalIdOptions({ goalId, size: 10 }));
 
-  const { data: goalData } = useQuery(getGoalOptions(goalId));
+  const { data: goalData } = useSuspenseQuery(getGoalOptions(goalId));
 
   const goalTitle = goalData?.title || "노트 모아보기";
 

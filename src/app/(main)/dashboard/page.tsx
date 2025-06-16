@@ -15,11 +15,9 @@ export const dynamic = "force-dynamic";
 export default async function DashboardPage() {
   const queryClient = getQueryClient();
 
-  await Promise.all([
-    queryClient.prefetchQuery(getDashboardOptions()),
-    queryClient.prefetchInfiniteQuery(getInfiniteGoalsOptions({})),
-    queryClient.prefetchQuery(getDashboardProgressOptions()),
-  ]);
+  queryClient.prefetchQuery(getDashboardOptions());
+  queryClient.prefetchInfiniteQuery(getInfiniteGoalsOptions({}));
+  queryClient.prefetchQuery(getDashboardProgressOptions());
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>

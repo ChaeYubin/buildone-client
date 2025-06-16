@@ -164,7 +164,7 @@ export default function NotesPage() {
   };
 
   if ((isEditMode && noteLoading) || (!isEditMode && todoLoading))
-    return <div>Loading...</div>;
+    return <div />;
 
   // 수정 모드이면 noteData의 정보를 사용, 그렇지 않으면 todoData의 정보를 사용
   const displayedTodoTitle = isEditMode

@@ -1,16 +1,9 @@
-import {
-  useInfiniteQuery,
-  useMutation,
-  useQuery,
-  useQueryClient,
-} from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-import { getNotesByGoalIdOptions } from "@/services/goal/note/query";
 import { createNote, deleteNote, getNote, updateNote } from "@/services/note";
 import { noteKeys, profileKeys, todoKeys } from "@/services/query-key";
 import {
   NoteCreateRequest,
-  NoteListParams,
   NoteResponse,
   NoteUpdateRequest,
 } from "@/types/note";
@@ -22,13 +15,6 @@ export interface NoteListResponse {
     nextCursor?: number;
   };
 }
-
-export const useInfiniteNotesByGoalId = (params: NoteListParams) => {
-  return useInfiniteQuery<NoteListResponse, Error>(
-    getNotesByGoalIdOptions(params),
-  );
-};
-
 export const useNoteDetail = (noteId: number) => {
   return useQuery<NoteResponse>({
     queryKey: noteKeys.detail(noteId),
