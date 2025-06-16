@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { useQueryClient } from "@tanstack/react-query";
 import { cva } from "class-variance-authority";
 import { useRouter } from "next/navigation";
 
@@ -36,16 +37,21 @@ const profileInfoStyle =
   "flex w-full items-end justify-between text-sm md:flex-col md:items-baseline lg:flex-col lg:items-baseline";
 
 export default function UserProfile({ isTabOpen }: { isTabOpen: boolean }) {
+  const queryClient = useQueryClient();
   const router = useRouter();
 
-  const { userInformation } = useUserStore();
+  const { userInformation, removeUserInfo } = useUserStore();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const logoutHandler = async () => {
     try {
       await logout();
 
+      removeUserInfo();
+      queryClient.removeQueries();
+
       successToast("logout", "로그아웃 되었습니다.");
+
       router.push("/login");
     } catch (error) {
       errorToast("logout", "로그아웃 오류가 발생했습니다.");
