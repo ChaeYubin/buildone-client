@@ -19,6 +19,7 @@ export function makeQueryClient() {
         shouldDehydrateQuery: (query) =>
           defaultShouldDehydrateQuery(query) ||
           query.state.status === "pending",
+        shouldRedactErrors: () => false,
       },
       mutations: {
         retry: 1,
