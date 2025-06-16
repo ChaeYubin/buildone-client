@@ -4,6 +4,7 @@ import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 
 import LoadingSpinner from "@/components/@common/loading-spinner";
 import GoalSummary from "@/components/goal-detail/goal-summary";
+import GoalSummarySkeleton from "@/components/goal-detail/goal-summary-skeleton";
 import RouteButtonToNotes from "@/components/goal-detail/route-button-to-notes";
 import TodoList from "@/components/goal-detail/todo-list";
 import getQueryClient from "@/lib/get-query-client";
@@ -43,13 +44,13 @@ export default async function GoalDetailPage({
       <div className="px-16 py-16 max-lg:mx-auto md:px-24 md:py-24 lg:mx-80 lg:max-w-1200 lg:px-0">
         <h1 className="hidden text-lg font-semibold md:block">목표</h1>
         <div className="flex flex-col gap-16 md:gap-24">
-          <Suspense fallback={<LoadingSpinner />}>
+          <Suspense fallback={<GoalSummarySkeleton />}>
             <GoalSummary goalId={goalId} />
           </Suspense>
           <RouteButtonToNotes goalId={goalId} />
           <Suspense
             fallback={
-              <div className="flex w-full items-center justify-center">
+              <div className="flex w-full items-center justify-center pt-32">
                 <LoadingSpinner />
               </div>
             }
