@@ -6,6 +6,7 @@ export const ENDPOINT = {
     LOGOUT: `${PREFIX}/auth/logout`,
     SIGNUP: `${PREFIX}/auth/signup`,
     TOKEN_VALIDATION: `${PREFIX}/auth/token`,
+    SET_COOKIE: `${PREFIX}/auth/set-cookie`,
   },
   GOAL: {
     GET_ALL: `${PREFIX}/goals`,

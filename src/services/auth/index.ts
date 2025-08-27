@@ -3,7 +3,7 @@ import { AxiosResponse } from "axios";
 import { ACCESS_TOKEN_KEY } from "@/constants/cookie";
 import { api } from "@/lib/axios";
 import { LoginResponse, SignupResponse } from "@/types/auth";
-import { removeCookie, setCookie } from "@/utils/cookie";
+import { removeCookie } from "@/utils/cookie";
 
 import { ENDPOINT } from "../endpoint";
 
@@ -19,10 +19,8 @@ export const login = async (
 
   const { accessToken } = res.data.credentials;
 
-  setCookie(ACCESS_TOKEN_KEY, accessToken, {
-    httpOnly: true,
-    sameSite: "strict",
-    secure: true,
+  await api.post(ENDPOINT.AUTH.SET_COOKIE, {
+    accessToken,
   });
 
   return res;
