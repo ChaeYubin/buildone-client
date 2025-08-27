@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -32,6 +32,8 @@ export default function LoginForm() {
   const router = useRouter();
   const { setUserInfo } = useUserStore();
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -58,6 +60,8 @@ export default function LoginForm() {
   }, [debouncedEmail, trigger]);
 
   const onSubmit = async (data: LoginSchema) => {
+    setIsSubmitting(true);
+
     try {
       const response = await login(data.email, data.password);
 
@@ -77,6 +81,8 @@ export default function LoginForm() {
           setError("password", { type: "valid", message: error.message });
         }
       }
+
+      setIsSubmitting(false);
     }
   };
 
@@ -116,7 +122,7 @@ export default function LoginForm() {
       <Button
         type="submit"
         className="mt-48 w-full"
-        disabled={!isDirty || !isValid}
+        disabled={!isDirty || !isValid || isSubmitting}
       >
         로그인하기
       </Button>
@@ -124,6 +130,7 @@ export default function LoginForm() {
         type="button"
         className="mt-16 w-full"
         onClick={() => onSubmit(TEST_ACCOUNT)}
+        disabled={isSubmitting}
       >
         테스트 계정으로 로그인하기
       </Button>
