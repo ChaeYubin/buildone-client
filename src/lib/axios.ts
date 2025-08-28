@@ -28,7 +28,11 @@ export const api = axios.create({
   withCredentials: true,
 });
 
-const noAuthPaths: string[] = [ENDPOINT.AUTH.LOGIN, ENDPOINT.AUTH.SIGNUP];
+const noAuthPaths: string[] = [
+  ENDPOINT.AUTH.LOGIN,
+  ENDPOINT.AUTH.SET_COOKIE,
+  ENDPOINT.AUTH.SIGNUP,
+];
 
 api.interceptors.request.use(
   async (config) => {
