@@ -1,5 +1,6 @@
 import localFont from "next/font/local";
 
+import ProjectNotice from "@/components/project-notice";
 import ResponsiveToaster from "@/lib/responsive-toaster";
 import TanstackQueryProvider from "@/lib/tanstack-query-provider";
 
@@ -33,6 +34,7 @@ export default function RootLayout({
         {/* <FcmProvider /> */}
         <TanstackQueryProvider>
           <ResponsiveToaster />
+          <ProjectNotice />
           {children}
         </TanstackQueryProvider>
       </body>
